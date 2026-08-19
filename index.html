@@ -1,31 +1,175 @@
- <!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#05070c"><title>Sibaeria Corp</title>
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title></title>
 <style>
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;width:100%;height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#05070c;color:#fff;overflow:hidden}body{background-size:cover;background-position:center;background-attachment:fixed}body:after{content:"";position:fixed;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.35));pointer-events:none;z-index:-1}.app{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;padding:env(safe-area-inset-top) 12px env(safe-area-inset-bottom);max-width:980px;margin:auto}header{height:64px;display:flex;align-items:center;justify-content:space-between}.title{font-weight:900;letter-spacing:1.4px;font-size:20px;text-shadow:0 2px 12px #000}.top-actions{display:flex;gap:7px}.icon{border:1px solid #ffffff28;background:#080a1088;border-radius:13px;width:44px;height:44px;font-size:20px;backdrop-filter:blur(12px);box-shadow:0 6px 20px #0005}.duel{flex:1;min-height:0;display:grid;grid-template-rows:1fr 1fr;gap:11px}.player{position:relative;border:1px solid #ffffff25;border-radius:25px;padding:14px;display:flex;flex-direction:column;justify-content:space-between;background:#0a0d16a8;backdrop-filter:blur(6px);box-shadow:0 12px 40px #0007;overflow:hidden}.name-row{display:flex;justify-content:space-between;align-items:center}.name{font-weight:800;font-size:16px;background:transparent;border:0;color:#fff;width:72%;outline:0}.lp{text-align:center;font-size:clamp(58px,18vw,112px);line-height:.92;font-weight:950;letter-spacing:-4px;text-shadow:0 5px 25px #000;margin:2px 0 7px}.controls{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.btn{border:1px solid #ffffff25;background:#ffffff12;color:#fff;border-radius:13px;min-height:44px;font-weight:800;box-shadow:inset 0 1px #ffffff10,0 5px 16px #0003}.minus{background:#73192a80}.plus{background:#19644680}.manual{display:flex;gap:7px;margin-top:7px}.manual input{min-width:0;flex:1;border:1px solid #ffffff25;background:#0008;color:#fff;border-radius:12px;padding:10px;text-align:center;outline:0}.manual button{width:72px}.bottom{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;padding:9px 0 5px}.modal{position:fixed;inset:0;z-index:20;display:none;align-items:center;justify-content:center;background:#000c;backdrop-filter:blur(8px);padding:12px}.modal.show{display:flex}.sheet{width:min(720px,100%);max-height:90%;background:linear-gradient(160deg,#171b27,#0c0f17);border:1px solid #ffffff22;border-radius:26px;padding:16px;box-shadow:0 20px 80px #000b;overflow:auto}.wide{width:min(920px,100%);min-height:min(78vh,760px);display:flex;flex-direction:column}.sheet-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}.sheet h2{margin:0;font-size:21px}.close{background:#ffffff12;border:1px solid #ffffff25;color:#fff;border-radius:11px;width:42px;height:42px}.random-display{flex:1;display:flex;align-items:center;justify-content:center;min-height:58vh;cursor:pointer;user-select:none}.random-value{font-size:clamp(110px,34vw,250px);font-weight:950;line-height:1;text-shadow:0 10px 45px #000;animation:pop .28s ease}.coin-value{font-size:clamp(75px,23vw,180px)}.tap{opacity:.55;text-align:center;font-size:13px;margin-bottom:4px}@keyframes pop{from{transform:scale(.7);opacity:.2}to{transform:scale(1);opacity:1}}textarea{width:100%;height:300px;resize:none;border:1px solid #ffffff22;background:#05070c;color:#fff;border-radius:14px;padding:12px;outline:0}.file-label{display:block;text-align:center;padding:14px;border-radius:13px;background:#ffffff12;border:1px solid #ffffff22;font-weight:800}#bgInput{display:none}.history{display:grid;gap:9px;margin-top:10px}.history-player{border:1px solid #ffffff18;border-radius:14px;padding:10px;background:#070a10}.history-title{font-weight:850;margin-bottom:7px}.entry{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid #ffffff0d;font-size:14px}.entry:last-child{border-bottom:0}.pos{color:#76d8a5}.neg{color:#ff8c9a}.set{color:#ffd76a}.small{opacity:.6;font-size:12px;text-align:center;margin-top:8px}@media(max-width:390px){.bottom{grid-template-columns:repeat(2,1fr)}}
-</style></head><body>
-<div class="app"><header><div class="title">SIBAERIA CORP</div><div class="top-actions"><button class="icon" id="bgBtn">🖼️</button><button class="icon" id="notesBtn">📝</button></div></header>
-<main class="duel"><section class="player"><div class="name-row"><input class="name" id="name1" value="GIOCATORE 1"><button class="icon" style="width:38px;height:38px;font-size:16px" onclick="resetPlayer(1)">↻</button></div><div class="lp" id="lp1">8000</div><div><div class="controls"><button class="btn minus" onclick="changeLP(1,-100)">−100</button><button class="btn minus" onclick="changeLP(1,-500)">−500</button><button class="btn plus" onclick="changeLP(1,500)">+500</button><button class="btn plus" onclick="changeLP(1,1000)">+1000</button></div><div class="manual"><input id="manual1" type="number" inputmode="numeric" placeholder="Modifica LP"><button class="btn" onclick="setLP(1)">SET</button></div></div></section>
-<section class="player"><div class="name-row"><input class="name" id="name2" value="GIOCATORE 2"><button class="icon" style="width:38px;height:38px;font-size:16px" onclick="resetPlayer(2)">↻</button></div><div class="lp" id="lp2">8000</div><div><div class="controls"><button class="btn minus" onclick="changeLP(2,-100)">−100</button><button class="btn minus" onclick="changeLP(2,-500)">−500</button><button class="btn plus" onclick="changeLP(2,500)">+500</button><button class="btn plus" onclick="changeLP(2,1000)">+1000</button></div><div class="manual"><input id="manual2" type="number" inputmode="numeric" placeholder="Modifica LP"><button class="btn" onclick="setLP(2)">SET</button></div></div></section></main>
-<div class="bottom"><button class="btn" onclick="rollDie()">🎲 DADO</button><button class="btn" onclick="flipCoin()">🪙 MONETA</button><button class="btn" onclick="showHistory()">📜 STORICO</button><button class="btn" onclick="resetGame()">⟳ NUOVO DUELLO</button></div></div>
-<div class="modal" id="randomModal"><div class="sheet wide"><div class="sheet-head"><h2 id="randomTitle">🎲 Dado</h2><button class="close" onclick="closeModal('randomModal')">✕</button></div><div class="random-display" onclick="reroll()"><div class="random-value" id="randomResult">—</div></div><div class="tap">tocca il risultato per rilanciare</div></div></div>
-<div class="modal" id="notesModal"><div class="sheet"><div class="sheet-head"><h2>📝 Appunti</h2><button class="close" onclick="closeModal('notesModal')">✕</button></div><textarea id="notes" placeholder="Scrivi qui i tuoi appunti del duello..."></textarea><div class="small">Salvati automaticamente sul dispositivo.</div></div></div>
-<div class="modal" id="bgModal"><div class="sheet"><div class="sheet-head"><h2>🖼️ Sfondo</h2><button class="close" onclick="closeModal('bgModal')">✕</button></div><label class="file-label" for="bgInput">Scegli un'immagine dalla galleria</label><input id="bgInput" type="file" accept="image/*"><button class="btn" style="width:100%;margin-top:8px" onclick="removeBg()">Rimuovi sfondo</button><div class="small">L'immagine viene mostrata molto più visibile e salvata localmente.</div></div></div>
-<div class="modal" id="historyModal"><div class="sheet"><div class="sheet-head"><h2>📜 Storico Life Points</h2><button class="close" onclick="closeModal('historyModal')">✕</button></div><div id="historyContent" class="history"></div></div></div>
+:root{--bg:#0b0d12;--card:rgba(18,22,31,.78);--line:rgba(255,255,255,.13);--txt:#f6f7fb;--muted:#aeb5c4;--accent:#8b7cff;--accent2:#43d9ff;--danger:#ff5575}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--txt)}
+body{background-image:linear-gradient(135deg,rgba(5,7,12,.82),rgba(5,7,12,.48)),var(--user-bg);background-size:cover;background-position:center;transition:background-image .35s ease}
+button,input,textarea{font:inherit}button{color:inherit;border:0;cursor:pointer}
+.app{height:100dvh;width:100%;max-width:720px;margin:auto;display:flex;flex-direction:column;position:relative;padding:12px;gap:10px}
+.topbar{height:52px;display:flex;align-items:center;justify-content:flex-end;gap:8px}
+.icon{width:46px;height:46px;border:1px solid var(--line);background:rgba(12,15,22,.72);backdrop-filter:blur(16px);border-radius:15px;font-size:20px;display:grid;place-items:center;box-shadow:0 8px 30px #0003}
+.players{flex:1;min-height:0;display:grid;grid-template-rows:1fr 1fr;gap:10px}
+.player{min-height:0;border:1px solid var(--line);border-radius:28px;background:var(--card);backdrop-filter:blur(18px);display:flex;flex-direction:column;justify-content:center;padding:16px;box-shadow:0 20px 60px #0004;position:relative;overflow:hidden}
+.player:before{content:"";position:absolute;inset:-40%;background:radial-gradient(circle at 50% 0%,rgba(139,124,255,.16),transparent 38%);pointer-events:none}
+.pname{font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;text-align:center}
+.lp{font-size:clamp(48px,13vw,88px);font-weight:800;letter-spacing:-.05em;text-align:center;line-height:1;margin:7px 0 14px;text-shadow:0 5px 30px #0008}
+.controls{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;max-width:440px;width:100%;margin:auto}
+.controls button{height:42px;border-radius:13px;background:rgba(255,255,255,.08);border:1px solid var(--line);font-weight:750;font-size:15px;transition:.16s transform,.16s background}
+.controls button:active,.tool:active{transform:scale(.94);background:rgba(255,255,255,.15)}
+.controls .minus{color:#ff8da4}.controls .plus{color:#8cf3ff}
+.bottom{height:66px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px}
+.tool{border:1px solid var(--line);border-radius:18px;background:rgba(12,15,22,.75);backdrop-filter:blur(16px);font-size:21px;box-shadow:0 8px 30px #0004}
+.modal{position:fixed;inset:0;background:#0009;backdrop-filter:blur(10px);display:none;align-items:flex-end;justify-content:center;padding:12px;z-index:20}
+.modal.open{display:flex}.sheet{width:min(700px,100%);max-height:88dvh;background:rgba(17,21,30,.96);border:1px solid var(--line);border-radius:28px;padding:16px;box-shadow:0 30px 100px #000b;animation:up .25s ease}
+@keyframes up{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
+.sheethead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.sheethead b{font-size:17px}
+.close{width:38px;height:38px;border-radius:12px;background:#fff1}.history{overflow:auto;max-height:55dvh;display:flex;flex-direction:column;gap:7px}
+.row{display:flex;justify-content:space-between;gap:10px;padding:10px 12px;border-radius:13px;background:#fff07;border:1px solid #fff0e}
+.row small{color:var(--muted)}.gain{color:#83f0c4}.loss{color:#ff8ba3}
+textarea{width:100%;height:55dvh;resize:none;background:#0b0e14;color:var(--txt);border:1px solid var(--line);border-radius:18px;padding:15px;outline:none}
+.dice-wrap,.coin-wrap{height:55dvh;display:grid;place-items:center;position:relative;overflow:hidden;border-radius:20px;background:radial-gradient(circle,#242a3c,#0b0e14 65%)}
+.die{width:100px;height:100px;background:linear-gradient(145deg,#fff,#cdd4df);border-radius:20px;display:grid;place-items:center;color:#111;font-size:48px;font-weight:900;box-shadow:0 18px 40px #0008;user-select:none}
+.die.roll{animation:diceroll .72s cubic-bezier(.2,.8,.25,1)}
+@keyframes diceroll{0%{transform:translateY(70px) rotate(0) scale(.65);opacity:.4}25%{transform:translateY(-95px) rotate(150deg) scale(1.05);opacity:1}55%{transform:translateY(28px) rotate(330deg) scale(.9)}78%{transform:translateY(-15px) rotate(500deg) scale(1.02)}100%{transform:translateY(0) rotate(540deg) scale(1)}}
+.coin-stage{width:150px;height:170px;display:grid;place-items:center;perspective:900px;position:relative}
+.coin-shadow{position:absolute;width:92px;height:18px;bottom:18px;border-radius:50%;background:#0007;filter:blur(8px);transform:scale(.75);opacity:.65;will-change:transform,opacity}
+.coin{width:118px;height:118px;border-radius:50%;display:grid;place-items:center;position:relative;
+background:radial-gradient(circle at 32% 27%,#fff8cf 0 7%,#f7dd72 20%,#d7a72d 62%,#a87817 100%);
+border:5px solid #f6dc73;color:#654700;font-size:22px;font-weight:900;
+box-shadow:inset 0 2px 4px #fff8,inset 0 -7px 12px #80580066,0 18px 35px #0008;
+transform-style:preserve-3d;will-change:transform;backface-visibility:hidden;
+-webkit-backface-visibility:hidden;contain:layout paint}
+.coin::before{content:"";position:absolute;inset:8px;border-radius:50%;border:2px solid #fff6;box-shadow:inset 0 0 0 2px #8c641c55}
+.coin::after{content:"";position:absolute;inset:-10px;border-radius:50%;border:6px solid #d5a62d;transform:translateZ(-1px)}
+.coin.flip{animation:coinToss 1.15s cubic-bezier(.12,.72,.18,1) both}
+.coin.flip + .coin-shadow{animation:shadowToss 1.15s cubic-bezier(.12,.72,.18,1) both}
+@keyframes coinToss{
+0%{transform:translate3d(0,92px,0) rotateX(0deg) rotateZ(-7deg) scale(.72)}
+10%{transform:translate3d(-8px,35px,0) rotateX(240deg) rotateZ(-5deg) scale(.88)}
+25%{transform:translate3d(5px,-48px,0) rotateX(720deg) rotateZ(5deg) scale(1.02)}
+43%{transform:translate3d(-4px,-82px,0) rotateX(1260deg) rotateZ(-4deg) scale(1.06)}
+61%{transform:translate3d(3px,-45px,0) rotateX(1800deg) rotateZ(3deg) scale(1.01)}
+76%{transform:translate3d(-2px,-10px,0) rotateX(2220deg) rotateZ(-2deg) scale(.98)}
+90%{transform:translate3d(1px,4px,0) rotateX(2520deg) rotateZ(1deg) scale(1.01)}
+100%{transform:translate3d(0,0,0) rotateX(2700deg) rotateZ(0deg) scale(1)}
+}
+@keyframes shadowToss{
+0%{transform:scale(.55);opacity:.18}
+25%{transform:scale(.72);opacity:.34}
+43%{transform:scale(.45);opacity:.15}
+61%{transform:scale(.64);opacity:.28}
+76%{transform:scale(.88);opacity:.5}
+90%{transform:scale(1.02);opacity:.68}
+100%{transform:scale(1);opacity:.62}
+}
+.hint{position:absolute;bottom:16px;color:#8891a2;font-size:12px;text-align:center;width:100%}
+input[type=file]{display:none}
+@media(max-height:680px){.app{padding:8px;gap:7px}.topbar{height:44px}.icon{width:40px;height:40px}.bottom{height:56px}.player{border-radius:22px}.lp{margin:4px 0 8px}.controls button{height:36px}.reset{top:50%}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <button class="icon" id="bgBtn" aria-label="Sfondo">▧</button>
+    <input id="bgInput" type="file" accept="image/*">
+    <button class="icon" id="resetBtn" aria-label="Nuova partita">↻</button>
+  </div>
+  <main class="players">
+    <section class="player">
+      <div class="pname">PLAYER 1</div><div class="lp" id="lp1">8000</div>
+      <div class="controls">
+        <button class="minus" data-p="1" data-n="-1000">−1000</button><button class="minus" data-p="1" data-n="-500">−500</button>
+        <button class="plus" data-p="1" data-n="500">+500</button><button class="plus" data-p="1" data-n="1000">+1000</button>
+      </div>
+    </section>
+    <section class="player">
+      <div class="pname">PLAYER 2</div><div class="lp" id="lp2">8000</div>
+      <div class="controls">
+        <button class="minus" data-p="2" data-n="-1000">−1000</button><button class="minus" data-p="2" data-n="-500">−500</button>
+        <button class="plus" data-p="2" data-n="500">+500</button><button class="plus" data-p="2" data-n="1000">+1000</button>
+      </div>
+    </section>
+  </main>
+  <nav class="bottom">
+    <button class="tool" id="diceBtn" title="Dado">⚄</button>
+    <button class="tool" id="coinBtn" title="Moneta">◉</button>
+    <button class="tool" id="historyBtn" title="Storico">☷</button>
+    <button class="tool" id="notesBtn" title="Appunti">✎</button>
+  </nav>
+</div>
+
+<div class="modal" id="modal"><div class="sheet">
+  <div class="sheethead"><b id="modalTitle"></b><button class="close" id="close">×</button></div>
+  <div id="modalBody"></div>
+</div></div>
+
 <script>
-let lp={1:8000,2:8000},history={1:[{lp:8000,delta:0,type:'start'}],2:[{lp:8000,delta:0,type:'start'}]},mode='die',rolling=false;const $=id=>document.getElementById(id);
-function render(){$('lp1').textContent=lp[1].toLocaleString('it-IT');$('lp2').textContent=lp[2].toLocaleString('it-IT')}
-function addH(p,o,v,t){history[p].push({lp:v,delta:v-o,type:t})}function changeLP(p,n){let o=lp[p];lp[p]=Math.max(0,lp[p]+n);addH(p,o,lp[p],n>0?'plus':'minus');render()}function setLP(p){let v=parseInt($('manual'+p).value);if(Number.isFinite(v)){v=Math.max(0,v);let o=lp[p];lp[p]=v;addH(p,o,v,'set');$('manual'+p).value='';render()}}function resetPlayer(p){lp[p]=8000;history[p]=[{lp:8000,delta:0,type:'start'}];render()}function resetGame(){lp={1:8000,2:8000};history={1:[{lp:8000,delta:0,type:'start'}],2:[{lp:8000,delta:0,type:'start'}]};render()}function openModal(id){$(id).classList.add('show')}function closeModal(id){$(id).classList.remove('show')}
-function rollDie(){mode='die';openModal('randomModal');$('randomTitle').textContent='🎲 Dado';rollDieNow()}function rollDieNow(){if(rolling)return;rolling=true;$('randomResult').textContent='…';setTimeout(()=>{$('randomResult').textContent=1+Math.floor(Math.random()*6);$('randomResult').className='random-value';rolling=false},280)}function flipCoin(){mode='coin';openModal('randomModal');$('randomTitle').textContent='🪙 Moneta';flipCoinNow()}function flipCoinNow(){if(rolling)return;rolling=true;$('randomResult').textContent='…';setTimeout(()=>{$('randomResult').textContent=Math.random()<.5?'TESTA':'CROCE';$('randomResult').className='random-value coin-value';rolling=false},350)}function reroll(){mode==='die'?rollDieNow():flipCoinNow()}
-function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}function showHistory(){let out='';for(let p=1;p<=2;p++){out+=`<div class="history-player"><div class="history-title">${esc($('name'+p).value)}</div>`+history[p].map((e,i)=>`<div class="entry"><span>${i?'Modifica':'Inizio'}</span><span class="${e.delta>0?'pos':e.delta<0?'neg':'set'}">${e.delta?(e.delta>0?'+':'')+e.delta:'—'}</span><b>${e.lp.toLocaleString('it-IT')} LP</b></div>`).join('')+'</div>'}$('historyContent').innerHTML=out;openModal('historyModal')}
-$('notesBtn').onclick=()=>openModal('notesModal');$('bgBtn').onclick=()=>openModal('bgModal');$('notes').value=localStorage.getItem('sibaeriaNotes')||'';$('notes').oninput=e=>localStorage.setItem('sibaeriaNotes',e.target.value);
-$('bgInput').onchange=e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{localStorage.setItem('sibaeriaBg',r.result)}catch(e){}document.body.style.backgroundImage=`linear-gradient(rgba(0,0,0,.08),rgba(0,0,0,.08)),url("${r.result}")`};r.readAsDataURL(f)};function removeBg(){localStorage.removeItem('sibaeriaBg');document.body.style.backgroundImage='';closeModal('bgModal')}let b=localStorage.getItem('sibaeriaBg');if(b)document.body.style.backgroundImage=`linear-gradient(rgba(0,0,0,.08),rgba(0,0,0,.08)),url("${b}")`;render();
-</script></body></html>
-   INITIAL RENDER
-========================================= */
+const state={lp:[8000,8000],history:[],notes:"",bg:localStorage.getItem("ygo-bg")||""};
+const $=s=>document.querySelector(s), modal=$("#modal"), body=$("#modalBody"), title=$("#modalTitle");
+function save(){localStorage.setItem("ygo-state",JSON.stringify(state))}
+const old=JSON.parse(localStorage.getItem("ygo-state")||"null"); if(old){state.lp=old.lp||state.lp;state.history=old.history||[];state.notes=old.notes||""}
+if(state.bg)document.body.style.setProperty("--user-bg",`url("${state.bg}")`);
+function render(){state.lp.forEach((v,i)=>$("#lp"+(i+1)).textContent=v.toLocaleString("it-IT"));save()}
+function change(p,n){const before=state.lp[p-1];state.lp[p-1]=Math.max(0,before+n);state.history.unshift({time:new Date().toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"}),p,n,before,after:state.lp[p-1]});render()}
+document.querySelectorAll(".controls button").forEach(b=>b.onclick=()=>change(+b.dataset.p,+b.dataset.n));
+function open(t,content){title.textContent=t;body.innerHTML=content;modal.classList.add("open")}
+function close(){modal.classList.remove("open");body.innerHTML=""}
+$("#close").onclick=close; modal.onclick=e=>{if(e.target===modal)close()};
+$("#historyBtn").onclick=()=>open("Storico",state.history.length?`<div class="history">${state.history.map(x=>`<div class="row"><small>${x.time} · P${x.p}</small><span class="${x.n>=0?"gain":"loss"}">${x.n>=0?"+":""}${x.n.toLocaleString("it-IT")} → ${x.after.toLocaleString("it-IT")}</span></div>`).join("")}</div>`:`<div class="hint" style="position:relative;bottom:auto;padding:40px 0">Nessuna modifica</div>`);
+$("#notesBtn").onclick=()=>{open("Appunti",`<textarea id="notes">${state.notes.replaceAll("&","&amp;").replaceAll("<","&lt;")}</textarea>`);const n=$("#notes");n.oninput=()=>{state.notes=n.value;save()}};
+let dieVal=1,coinVal="TESTA",coinBusy=false;
+$("#diceBtn").onclick=()=>{
+  open("Dado",`<div class="dice-wrap"><div class="die" id="die">${dieVal}</div><div class="hint">Tocca il dado per rilanciare</div></div>`);
+  rollDie();
+};
+function rollDie(){
+  const d=$("#die");
+  if(!d)return;
+  dieVal=1+Math.floor(Math.random()*6);
+  d.classList.remove("roll");
+  void d.offsetWidth;
+  d.textContent=dieVal;
+  d.classList.add("roll");
+}
 
-renderScore(0);
-renderScore(1);
-
+$("#coinBtn").onclick=()=>{
+  open("Moneta",`<div class="coin-wrap"><div class="coin-stage"><div class="coin-shadow"></div><div class="coin" id="coin">•</div></div><div class="hint">Tocca la moneta per rilanciarla</div></div>`);
+  flipCoin();
+};
+function flipCoin(){
+  const c=$("#coin");
+  if(!c || coinBusy)return;
+  coinBusy=true;
+  coinVal=Math.random()<.5?"TESTA":"CROCE";
+  c.classList.remove("flip");
+  c.textContent="•";
+  void c.offsetWidth;
+  c.classList.add("flip");
+  c.addEventListener("animationend",()=>{
+    c.textContent=coinVal;
+    c.classList.remove("flip");
+    coinBusy=false;
+  },{once:true});
+}
+body.addEventListener("click",e=>{
+  if(e.target.id==="die")rollDie();
+  if(e.target.id==="coin")flipCoin();
+});
+$("#bgBtn").onclick=()=>$("#bgInput").click();
+$("#bgInput").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{state.bg=r.result;document.body.style.setProperty("--user-bg",`url("${r.result}")`);save()};r.readAsDataURL(f)};
+function newGame(){
+  state.lp=[8000,8000];
+  state.history=[];
+  state.notes="";
+  render();
+  close();
+}
+$("#resetBtn").onclick=()=>newGame();
+render();
 </script>
-
 </body>
 </html>
